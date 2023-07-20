@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Filament\Resources\EventResource\Pages;
+
+use App\Actions\SendInvites;
+use App\Filament\Resources\EventResource;
+use Filament\Pages\Actions;
+use Filament\Resources\Pages\EditRecord;
+
+class EditEvent extends EditRecord
+{
+    protected static string $resource = EventResource::class;
+
+    protected function getActions(): array
+    {
+        $actions = [];
+
+        if (!$this->data['is_active']) {
+            $actions[] = Actions\Action::make('launch')->action('launchEvent')->requiresConfirmation();
+        } else {
+            $actions[] = Actions\Action::make('close')->action('closeEvent')->requiresConfirmation();
+        }
+        $actions[] = Actions\DeleteAction::make();
+        return $actions;
+    }
+
+    public function launchEvent(): void
+    {
+        $this->record->is_active = true;
+        $this->record->is_invite_sent = true;
+
+        try {
+            (new SendInvites($this->record))->execute();
+        } catch(\Exception $exception) {
+            // TODO: Error message about how sending email didn't work
+            // Mostly we don't want to save record if sending invites didn't go well
+        } finally {
+            $this->record->save();
+            $this->refreshFormData(['is_active', 'is_invite_sent']);
+        }
+
+    }
+
+    public function closeEvent(): void
+    {
+        $this->record->is_active = false;
+        $this->record->save();
+        $this->refreshFormData(['is_active']);
+
+    }
+
+}
