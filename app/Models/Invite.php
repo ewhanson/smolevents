@@ -31,7 +31,8 @@ class Invite extends Model
         'is_attending',
         'has_responded',
         'number_attending',
-        'comments'
+        'comments',
+        'is_invite_sent',
     ];
 
     protected static function booted()
