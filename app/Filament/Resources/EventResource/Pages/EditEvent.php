@@ -27,7 +27,6 @@ class EditEvent extends EditRecord
     public function launchEvent(): void
     {
         $this->record->is_active = true;
-        $this->record->is_invite_sent = true;
 
         try {
             (new SendInvites($this->record))->execute();
@@ -36,7 +35,7 @@ class EditEvent extends EditRecord
             // Mostly we don't want to save record if sending invites didn't go well
         } finally {
             $this->record->save();
-            $this->refreshFormData(['is_active', 'is_invite_sent']);
+            $this->refreshFormData(['is_active']);
         }
 
     }
