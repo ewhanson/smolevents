@@ -21,7 +21,7 @@
 {{-- Footer --}}
 <x-slot:footer>
 <x-mail::footer>
-© {{ date('Y') }} Erik Hanson. @lang('All rights reserved.')
+© {{ date('Y') }} Erik Hanson.
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>
