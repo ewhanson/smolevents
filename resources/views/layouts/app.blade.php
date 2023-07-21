@@ -6,11 +6,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
         :root {
+            --font-family: 'Inter', system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+            "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+            "Segoe UI Symbol", "Noto Color Emoji";
             --border-radius: 0.75rem;
         }
         main {
-            min-height: calc(100vh - 6rem);
+            min-height: calc(100vh - 6.5rem);
         }
     </style>
 
