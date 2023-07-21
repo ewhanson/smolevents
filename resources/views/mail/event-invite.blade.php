@@ -11,7 +11,7 @@ Hey {{ $invite->name }}  👋
 
 {{ $event->description }}
 
-<x-mail::button :url="'http://events.test/invites/' . $invite->id">
+<x-mail::button :url="$url">
 RSVP
 </x-mail::button>
 

@@ -17,6 +17,7 @@ class EventInvite extends Mailable
 
     public Invite $invite;
     public Event $event;
+    public string $url;
 
     /**
      * Create a new message instance.
@@ -25,6 +26,7 @@ class EventInvite extends Mailable
     {
         $this->invite = $invite;
         $this->event = $invite->event()->first();
+        $this->url = url("/invites/{$invite->id}");
     }
 
     /**
