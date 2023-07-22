@@ -36,7 +36,7 @@
         </header>
         @yield('content')
         <footer class="container">
-            <p><small>Built with ☕ by <a href="https://erikhanson.dev" class="secondary">Erik Hanson</a></small></p>
+            <p><small>Built with 🤎 by <a href="https://erikhanson.dev" class="secondary">Erik Hanson</a></small></p>
         </footer>
     </div>
 
