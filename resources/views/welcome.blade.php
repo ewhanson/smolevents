@@ -7,5 +7,6 @@
             Smol Events is an event management platform for sending email invitations and collecting RSVPs.</br>
             Perfect for your next birthday bash!
         </p>
+        <p>Currently in private beta. More info coming soon!  👀</p>
     </main>
 @endsection
