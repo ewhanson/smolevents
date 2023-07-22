@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
+use App\Filament\Resources\EventResource\Widgets\InviteCount;
 use App\Models\Event;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -63,6 +64,13 @@ class EventResource extends Resource
             'create' => Pages\CreateEvent::route('/create'),
             'view' => Pages\ViewEvent::route('/{record}'),
             'edit' => Pages\EditEvent::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            InviteCount::class,
         ];
     }
 }

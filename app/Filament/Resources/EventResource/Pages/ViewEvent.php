@@ -9,4 +9,11 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewEvent extends ViewRecord
 {
     protected static string $resource = EventResource::class;
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            EventResource\Widgets\InviteCount::class,
+        ];
+    }
 }
