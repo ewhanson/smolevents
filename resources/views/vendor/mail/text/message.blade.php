@@ -21,7 +21,7 @@
     {{-- Footer --}}
     <x-slot:footer>
         <x-mail::footer>
-            © {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
+            Make with 🤎 by [Erik Hanson](https://erikhanson.dev)
         </x-mail::footer>
     </x-slot:footer>
 </x-mail::layout>

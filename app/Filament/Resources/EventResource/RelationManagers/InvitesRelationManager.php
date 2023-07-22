@@ -28,7 +28,8 @@ class InvitesRelationManager extends RelationManager
                     ->email(),
                 Forms\Components\Toggle::make('is_attending'),
                 Forms\Components\Toggle::make('has_responded'),
-                Forms\Components\TextInput::make('number_attending')->numeric()->default(0)
+                Forms\Components\TextInput::make('number_attending')->numeric()->default(0),
+                Forms\Components\TextInput::make('comments'),
             ]);
     }
 
@@ -43,12 +44,18 @@ class InvitesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('number_attending'),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('has_responded')
+                    ->query(fn (Builder $query): Builder => $query->where('has_responded', true))
+                    ->toggle(),
+                Tables\Filters\Filter::make('is_attending')
+                    ->query(fn (Builder $query): Builder => $query->where('is_attending', true))
+                    ->toggle(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])

@@ -10,8 +10,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EventResource extends Resource
 {
@@ -43,6 +41,7 @@ class EventResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -62,6 +61,7 @@ class EventResource extends Resource
         return [
             'index' => Pages\ListEvents::route('/'),
             'create' => Pages\CreateEvent::route('/create'),
+            'view' => Pages\ViewEvent::route('/{record}'),
             'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
     }

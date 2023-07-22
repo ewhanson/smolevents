@@ -21,7 +21,7 @@
 {{-- Footer --}}
 <x-slot:footer>
 <x-mail::footer>
-© {{ date('Y') }} Erik Hanson.
+Make with 🤎 by <a href="https://erikhanson.dev">Erik Hanson</a>
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>
