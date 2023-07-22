@@ -18,6 +18,11 @@
 
             <p>{!! nl2br(e($invite->event()->first()->description)) !!}</p>
         </header>
+        @if (session()->has('message'))
+            <button style="background-color: #43a047; opacity: 1" disabled>
+                {{session('message')}}
+            </button>
+        @endif
         <p>Let us know if you're able to attend!</p>
 
         <form wire:submit.prevent="save">
@@ -48,16 +53,10 @@
                 </div>
 
                 <label for="comments">
-                    Any dietary restrictions or fun facts you'd like us to know about?
+                    Any comments or fun facts you'd like us to know about?
                     <input type="text" id="comments" name="comments" wire:model="invite.comments">
                 </label>
-                <button type="submit">
-                    @if (session()->has('message'))
-                        <div>{{session('message')}}</div>
-                    @else
-                        Submit
-                    @endif
-                </button>
+                <button type="submit">Submit</button>
         </form>
     </article>
 </main>

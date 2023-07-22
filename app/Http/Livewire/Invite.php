@@ -12,7 +12,7 @@ class Invite extends Component
     protected $rules = [
         'invite.is_attending' => 'required|boolean',
         'invite.number_attending' => 'required|digits_between:0,5',
-        'invite.comments' => 'string|nullable'
+        'invite.comments' => 'string|nullable|max:255'
     ];
 
     public function render()
