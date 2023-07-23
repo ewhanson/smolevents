@@ -8,5 +8,6 @@
             Perfect for your next birthday bash!
         </p>
         <p>Currently in private beta. More info coming soon!  👀</p>
+        <p>Already have access? <a class="secondary" href="/admin">Let's get started</a>!</p>
     </main>
 @endsection
