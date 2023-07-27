@@ -17,6 +17,7 @@ use Symfony\Component\Uid\Ulid;
  * @property Carbon $end_time
  * @property string $location
  * @property boolean $is_active
+ * @property boolean $is_reminder_sent
  */
 class Event extends Model
 {
