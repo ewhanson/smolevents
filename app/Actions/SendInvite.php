@@ -16,7 +16,7 @@ class SendInvite
     public function execute(): void
     {
         try {
-            Mail::to($this->invite)->send(new EventInvite($this->invite));
+            Mail::to($this->invite)->queue(new EventInvite($this->invite));
             $this->invite->is_invite_sent = true;
             $this->invite->save();
         } catch (\Exception $exception) {
