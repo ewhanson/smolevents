@@ -15,6 +15,8 @@ Hey {{ $invite->name }}  👋
 RSVP
 </x-mail::button>
 
+If you cannot access the link above, you may RSVP at {{ $url }}
+
 Thanks,<br>
 {{ $event->host }}
 </x-mail::message>
