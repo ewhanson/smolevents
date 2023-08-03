@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Headers;
 use Illuminate\Queue\SerializesModels;
 
 class InviteReminder extends Mailable
@@ -36,6 +37,15 @@ class InviteReminder extends Mailable
     {
         return new Envelope(
             subject: "🎟️  Reminder — You're invited: " . $this->event->name . "!",
+        );
+    }
+
+    public function headers(): Headers
+    {
+        return new Headers(
+            text: [
+                'X-PM-Tag' => 'sm-reminder'
+            ]
         );
     }
 
