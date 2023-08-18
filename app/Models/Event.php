@@ -18,6 +18,7 @@ use Symfony\Component\Uid\Ulid;
  * @property string $location
  * @property boolean $is_active
  * @property boolean $is_reminder_sent
+ * @property boolean $is_event_notice_sent
  */
 class Event extends Model
 {

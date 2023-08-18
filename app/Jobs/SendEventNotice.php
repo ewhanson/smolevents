@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\InviteReminder;
+use App\Mail\EventNotice;
 use App\Models\Event;
 use App\Models\Invite;
 use Carbon\Carbon;
@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class SendInviteReminders implements ShouldQueue
+class SendEventNotice implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -25,7 +25,7 @@ class SendInviteReminders implements ShouldQueue
      */
     public function __construct()
     {
-
+        //
     }
 
     /**
@@ -33,25 +33,26 @@ class SendInviteReminders implements ShouldQueue
      */
     public function handle(): void
     {
-        $events = Event::where('start_time', '<', Carbon::now()->addDays(14))
+        $events = Event::where('start_time', '<', Carbon::now()->addDays(1))
             ->where('is_active', '=', true)
-            ->where('is_reminder_sent', '=', false)
+            ->where('is_event_notice_sent', '=', false)
             ->get();
 
         $events->each(function(Event $event) {
             /** @var Collection<Invite> $invites */
             $invites = $event->invites()->getResults();
-            $invites->filter(fn (Invite $invite) => $invite->has_responded == false)
+            $invites->filter(fn (Invite $invite) => $invite->is_attending == true)
                 ->each(function (Invite $invite) {
                     try {
-                        Mail::to($invite)->queue(new InviteReminder($invite));
+                        Mail::to($invite)->queue(new EventNotice($invite));
                     } catch (\Exception $exception) {
                         Log::error($exception->getMessage() . "\n Failed for " . $invite->email);
                     }
                 });
 
-            $event->is_reminder_sent = true;
+            $event->is_event_notice_sent = true;
             $event->save();
         });
+
     }
 }
