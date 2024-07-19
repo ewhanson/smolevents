@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
+use App\Filament\Resources\EventResource\Widgets\EventStatus;
 use App\Filament\Resources\EventResource\Widgets\InviteCount;
 use App\Models\Event;
 use Filament\Forms;
@@ -71,6 +72,7 @@ class EventResource extends Resource
     {
         return [
             InviteCount::class,
+            EventStatus::class,
         ];
     }
 }

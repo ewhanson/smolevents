@@ -16,9 +16,15 @@ class EditEvent extends EditRecord
         $actions = [];
 
         if (!$this->data['is_active']) {
-            $actions[] = Actions\Action::make('launch')->action('launchEvent')->requiresConfirmation();
+            $actions[] = Actions\Action::make('launchEvent')
+                ->action('launchEvent')
+                ->color('success')
+                ->requiresConfirmation();
         } else {
-            $actions[] = Actions\Action::make('close')->action('closeEvent')->requiresConfirmation();
+            $actions[] = Actions\Action::make('closeEvent')
+                ->action('closeEvent')
+                ->color('danger')
+                ->requiresConfirmation();
         }
         $actions[] = Actions\DeleteAction::make();
         return $actions;
