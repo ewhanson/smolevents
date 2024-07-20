@@ -15,7 +15,7 @@ Just a quick note to remind you that *{{ $event->name }}* is happening tomorrow.
 Review event details
 </x-mail::button>
 
-If you cannot access the link above, you may view the event details at {{ $url }}
+If there is no RSVP button above, you may view the event details by pasting the following URL into your browser: {{ $url }}
 
 Thanks,<br>
 {{ $event->host }}

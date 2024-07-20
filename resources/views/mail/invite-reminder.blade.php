@@ -17,7 +17,7 @@ It's not too late to come (or let us know if you can't)!
 RSVP
 </x-mail::button>
 
-If you cannot access the link above, you may RSVP at {{ $url }}
+If there is no RSVP button above, you may RSVP by pasting the following URL into your browser: {{ $url }}
 
 Thanks,<br>
 {{ $event->host }}
