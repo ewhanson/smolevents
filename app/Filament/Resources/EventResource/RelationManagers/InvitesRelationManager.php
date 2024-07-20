@@ -29,7 +29,7 @@ class InvitesRelationManager extends RelationManager
                 Forms\Components\Toggle::make('is_attending'),
                 Forms\Components\Toggle::make('has_responded'),
                 Forms\Components\TextInput::make('number_attending')->numeric()->default(0),
-                Forms\Components\TextInput::make('comments'),
+                Forms\Components\Textarea::make('comments'),
             ]);
     }
 
