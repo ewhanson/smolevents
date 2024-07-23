@@ -11,7 +11,6 @@
                     <br/>
                     📍  {{ $invite->event()->first()->location }}
                 </h2>
-{{--                    <h2>{{ $invite->event()->first()->start_time}} - {{$invite->event()->first()->end_time }}</h2>--}}
             </hgroup>
 
             <p>Heya, {{ $invite->name }}! 👋</p>

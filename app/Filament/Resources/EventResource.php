@@ -44,6 +44,9 @@ class EventResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('preview')
+                    ->url(fn (\App\Models\Event $record): string => route('events.preview', ['event' => $record]))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

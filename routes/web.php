@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/invites/{invite}', \App\Http\Livewire\Invite::class);
+Route::get('/events/{event}', \App\Http\Livewire\EventPreview::class)->name('events.preview');

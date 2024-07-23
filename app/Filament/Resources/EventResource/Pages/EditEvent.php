@@ -26,6 +26,11 @@ class EditEvent extends EditRecord
                 ->color('danger')
                 ->requiresConfirmation();
         }
+
+        $actions[] = Actions\Action::make('preview')
+            ->url(fn (): string => route('events.preview', ['event' => $this->record]))
+            ->openUrlInNewTab();
+
         $actions[] = Actions\DeleteAction::make();
         return $actions;
     }

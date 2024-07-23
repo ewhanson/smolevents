@@ -13,12 +13,6 @@ class ViewEvent extends ViewRecord
 
     protected function getActions(): array
     {
-        $resource = static::getResource();
-
-        if (! $resource::canEdit($this->getRecord())) {
-            return parent::getActions();
-        }
-
         $actions = [];
 
         if (!$this->data['is_active']) {
@@ -27,6 +21,10 @@ class ViewEvent extends ViewRecord
                 ->color('success')
                 ->requiresConfirmation();
         }
+
+        $actions[] = Actions\Action::make('preview')
+            ->url(fn (): string => route('events.preview', ['event' => $this->record]))
+            ->openUrlInNewTab();
 
         $parentActions = parent::getActions();
         return array_merge($actions, $parentActions);
