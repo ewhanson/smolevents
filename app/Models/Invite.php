@@ -56,7 +56,7 @@ class Invite extends Model
 
             try {
                 $event = $invite->event()->first();
-                $text = '🎟️ Update for "' . $event->name . '":'. PHP_EOL . PHP_EOL . ($invite->is_attending ? '✅ ' : '❌ ') . $invite->name . ($invite->is_attending ? ' is attending!' : ' cannot attend.') . PHP_EOL . PHP_EOL . 'See: ' . url('admin/events/' . $invite->event_id);
+                $text = '🎟️ Update for "' . $event->name . '":'. PHP_EOL . PHP_EOL . ($invite->is_attending ? '✅ ' : '❌ ') . $invite->name . ($invite->is_attending ? ' can attend!' : ' cannot attend.') . PHP_EOL . PHP_EOL . 'See: ' . url('admin/events/' . $invite->event_id);
                 $message = new TextMessage(['type' => 'text', 'text' => $text]);
                 $request =  new PushMessageRequest(['to' => config('line-bot.user_id'), 'messages' => [$message]]);
                 LINEMessagingApi::pushMessage($request);
