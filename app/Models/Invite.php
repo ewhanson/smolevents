@@ -42,11 +42,11 @@ class Invite extends Model
 
     protected static function booted()
     {
-        static::created(function (Invite $invite) {
+        static::created(queueable(function (Invite $invite) {
             if ($invite->event()->first()->is_active) {
                 (new SendInvite($invite))->execute();
             }
-        });
+        }));
 
         static::saved(queueable(function (Invite $invite) {
             $original = $invite->getOriginal();
