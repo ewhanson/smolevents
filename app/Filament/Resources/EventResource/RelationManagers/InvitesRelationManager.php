@@ -38,10 +38,11 @@ class InvitesRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('email')->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_attending')->boolean(),
                 Tables\Columns\IconColumn::make('has_responded')->boolean(),
                 Tables\Columns\TextColumn::make('number_attending'),
+                Tables\Columns\TextColumn::make('updated_at')->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\Filter::make('has_responded')
